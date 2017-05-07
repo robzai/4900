@@ -12,6 +12,7 @@
 		B3A3B3141EBADB9900E20C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3121EBADB9900E20C30 /* Main.storyboard */; };
 		B3A3B3161EBADB9900E20C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3151EBADB9900E20C30 /* Assets.xcassets */; };
 		B3A3B3191EBADB9900E20C30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */; };
+		B3E99D2F1EBEA4C5007E5554 /* CustomTabBarContraoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E99D2E1EBEA4C5007E5554 /* CustomTabBarContraoller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B3A3B3151EBADB9900E20C30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3A3B3181EBADB9900E20C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3A3B31A1EBADB9900E20C30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3E99D2E1EBEA4C5007E5554 /* CustomTabBarContraoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarContraoller.swift; path = ../CustomTabBarContraoller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */,
 				B3A3B3101EBADB9900E20C30 /* ViewController.swift */,
+				B3E99D2E1EBEA4C5007E5554 /* CustomTabBarContraoller.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
 				B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */,
@@ -96,6 +99,7 @@
 				TargetAttributes = {
 					B3A3B30A1EBADB9900E20C30 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = EX2NY352P2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E99D2F1EBEA4C5007E5554 /* CustomTabBarContraoller.swift in Sources */,
 				B3A3B3111EBADB9900E20C30 /* ViewController.swift in Sources */,
 				B3A3B30F1EBADB9900E20C30 /* AppDelegate.swift in Sources */,
 			);
@@ -262,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EX2NY352P2;
 				INFOPLIST_FILE = 4900/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leo.-900";
@@ -274,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EX2NY352P2;
 				INFOPLIST_FILE = 4900/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leo.-900";
@@ -301,6 +308,7 @@
 				B3A3B31F1EBADB9900E20C30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
