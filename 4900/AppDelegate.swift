@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = CustomTabBarContraoller()
+        window?.rootViewController = CustomTabBarController()
         
         //set the color of the very top bar
         UINavigationBar.appearance().barTintColor = UIColor(red: 217/255, green: 92/255, blue: 74/255, alpha: 1)
@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //when the icon in tabbar is selected change it to the color setted here
         UITabBar.appearance().tintColor = UIColor(red: 217/255, green: 92/255, blue: 74/255, alpha: 1)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        application.statusBarStyle = .lightContent
         
         return true
     }

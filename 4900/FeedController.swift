@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Foundation
+import SystemConfiguration
 
 let cellId = "cellId"
 
@@ -19,34 +23,89 @@ class Post{
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
+    var objects = [JSON]()
     //create an array which contain all the posts
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let post1 = Post()
-        post1.title = "title of post 1"
-        post1.statusText = "content of post 1_content of post 1_content of post 1_content of post 1_"
-        post1.statusImageName = "pic1"
+        if !isInternetAvailable() {
+            self.createAlert(titleMsg: "Alert", messageMsg: "ooop something wrong~")
+        }
         
-        let post2 = Post()
-        post2.title = "title of post 2"
-        post2.statusText = "content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_"
-        post2.statusImageName = "pic2"
+//        let post1 = Post()
+//        post1.title = "title of post 1"
+//        post1.statusText = "content of post 1_content of post 1_content of post 1_content of post 1_"
+//        post1.statusImageName = "pic1"
+//        
+//        let post2 = Post()
+//        post2.title = "title of post 2"
+//        post2.statusText = "content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_"
+//        post2.statusImageName = "pic2"
+//        
+//        posts.append(post1)
+//        posts.append(post2)
+//        
+//        navigationItem.title = "RMHC"
+//        collectionView?.alwaysBounceVertical = true
+//        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+//        //register cells for the collection view
+//        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         
-        posts.append(post1)
-        posts.append(post2)
         
-        navigationItem.title = "RMHC"
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
-        //register cells for the collection view
-        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        Alamofire.request("http://4900.onebite.tk/jason.php").responseJSON {
+            response in
+            if let  rawJSON = response.result.value {
+                let json = JSON(rawJSON)
+                
+                for (_, subJSON) : (String, JSON) in json
+                {
+                    
+                    let pk = subJSON["id"].stringValue
+                    let action = subJSON["action"]
+                    
+                    print("\(pk) -> \(action)")
+                    //self.objects.append(subJSON)
+                    //print("\(key) -> ")
+                    
+                }
+            }
+            //self.collectionView?.reloadData()
+        }
     }
 
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
+    
+    func createAlert(titleMsg:String, messageMsg:String){
+        let alert = UIAlertController(title: titleMsg, message: messageMsg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Collection View
+    
     //return number of items in the session(collection view)
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
