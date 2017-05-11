@@ -14,9 +14,9 @@ class Story{
     var story: String?
     var imgs: String?
     var video: String?
-    var postTime: Int?
+    var postTime: String?
 
-    init(reason: String, action: String, group: String, story: String, imgs: String, video: String, postTime: Int){
+    init(reason: String, action: String, group: String, story: String, imgs: String, video: String, postTime: String){
         self.reason = reason
         self.action = action
         self.group = group
