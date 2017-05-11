@@ -6,25 +6,24 @@
 //  Copyright © 2017 leo  luo. All rights reserved.
 //
 
-import UIKit
-
 class Story{
-
-    var storyTitle: String?
-    var storyDate: String?
-    var storyContents: String?
-    var storyImageName: String?
-
-    init(storyTitle: String, storyDate: String, storyContents: String, storyImageName: String){
-        self.storyTitle = storyTitle
-        self.storyDate = storyDate
-        self.storyContents = storyContents
-        self.storyImageName = storyImageName
-    }
     
-    convenience init(copies story: Story){
-        self.init(storyTitle: story.storyTitle!, storyDate: story.storyDate!,
-                  storyContents: story.storyContents!, storyImageName: story.storyImageName!)
+    var reason: String?
+    var action: String?
+    var group: String?
+    var story: String?
+    var imgs: String?
+    var video: String?
+    var postTime: Int?
+
+    init(reason: String, action: String, group: String, story: String, imgs: String, video: String, postTime: Int){
+        self.reason = reason
+        self.action = action
+        self.group = group
+        self.story = story
+        self.imgs = imgs
+        self.video = video
+        self.postTime = postTime
     }
     
 }

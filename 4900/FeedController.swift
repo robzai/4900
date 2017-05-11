@@ -14,18 +14,12 @@ import SystemConfiguration
 
 let cellId = "cellId"
 
-//a model obj for each post
-class Post{
-    var title: String?
-    var statusText: String?
-    var statusImageName: String?
-}
-
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     var objects = [JSON]()
     //create an array which contain all the posts
-    var posts = [Post]()
+    //var posts = [Post]()
+    var posts = [Story]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +27,6 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         if !isInternetAvailable() {
             self.createAlert(titleMsg: "Alert", messageMsg: "ooop something wrong~")
         }
-        
-//        let post1 = Post()
-//        post1.title = "title of post 1"
-//        post1.statusText = "content of post 1_content of post 1_content of post 1_content of post 1_"
-//        post1.statusImageName = "pic1"
-//        
-//        let post2 = Post()
-//        post2.title = "title of post 2"
-//        post2.statusText = "content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_"
-//        post2.statusImageName = "pic2"
-//        
-//        posts.append(post1)
-//        posts.append(post2)
-//        
-//        navigationItem.title = "RMHC"
-//        collectionView?.alwaysBounceVertical = true
-//        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
-//        //register cells for the collection view
-//        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         
         
         Alamofire.request("http://4900.onebite.tk/jason.php").responseJSON {
@@ -62,17 +37,29 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
                 for (_, subJSON) : (String, JSON) in json
                 {
                     
-                    let pk = subJSON["id"].stringValue
-                    let action = subJSON["action"]
+                    let jReason = subJSON["reason"].stringValue
+                    let jAction = subJSON["action"].stringValue
+                    let jGroup = subJSON["groupname"].stringValue
+                    let jStory = subJSON["textstories"].stringValue
+                    let jImgs = subJSON["images"].stringValue
+                    let jVideo = subJSON["video"].stringValue
+                    let jPostTime = subJSON["posttime"].intValue
                     
-                    print("\(pk) -> \(action)")
-                    //self.objects.append(subJSON)
-                    //print("\(key) -> ")
+                    //print("\(reason) -> \(action)")
+                    let story = Story(reason: jReason, action: jAction, group: jGroup, story: jStory, imgs: jImgs, video: jVideo, postTime: jPostTime)
+                    self.posts.append(story)
                     
                 }
             }
-            //self.collectionView?.reloadData()
+            self.collectionView?.reloadData()
         }
+        
+        navigationItem.title = "RMHC"
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        //register cells for the collection view
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        
     }
 
     func isInternetAvailable() -> Bool
@@ -123,7 +110,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
     
     //specify the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let statusText = posts[indexPath.item].statusText{
+        if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
             let fixedHight: CGFloat = 4 + 40 + 2 + 300
@@ -138,9 +125,10 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
 //create and register cells, every time a cell is dequeue this will be called
 class FeedCell: UICollectionViewCell{
     
-    var post: Post? {
+    //var post: Post? {
+    var post: Story? {
         didSet{
-            if let title = post?.title{
+            if let title = post?.group{
                 let attriabutedText = NSMutableAttributedString(string: title, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
                 //bottom line text
                 attriabutedText.append(NSAttributedString(string: "\nMay 4", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
@@ -152,12 +140,13 @@ class FeedCell: UICollectionViewCell{
                 nameLabel.attributedText = attriabutedText
             }
             
-            if let statusText = post?.statusText{
+            if let statusText = post?.story{
                 statusTextView.text = statusText
             }
             
-            if let statusImage = post?.statusImageName{
-                statusImageView.image = UIImage(named: statusImage)
+            if let statusImageURL = post?.imgs{
+                //statusImageView.image = UIImage(named: statusImage)
+                getImage(statusImageURL, statusImageView)
             }
         }
     }
@@ -190,9 +179,8 @@ class FeedCell: UICollectionViewCell{
     }()
     
     //create imageView to contain photo of the story
-    let statusImageView: UIImageView = {
+    let statusImageView: UIImageView! = {
         let imageView = UIImageView()
-//        imageView.image = UIImage(named: "pic1")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -209,6 +197,32 @@ class FeedCell: UICollectionViewCell{
         addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusImageView)
         addConstraintsWithFormat(format: "V:|-4-[v0(40)]-2-[v1]-2-[v2(300)]|", views: nameLabel,statusTextView,statusImageView)
         
+    }
+    
+    //https://www.youtube.com/watch?v=Z6D68MMx2pw
+    func getImage(_ url_str:String, _ imageView:UIImageView){
+        
+        let url:URL = URL(string: url_str)!
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url, completionHandler: {(data, response, error) in
+            
+            if data != nil{
+                let image = UIImage(data: data!)
+                
+                if(image != nil){
+                    DispatchQueue.main.async(execute: {
+                        
+                        imageView.image = image
+                        imageView.alpha = 0
+                        UIView.animate(withDuration: 2.5, animations: {
+                            imageView.alpha = 1.0
+                        })
+                    })
+                }
+            }
+        })
+        task.resume()
     }
     
 }
