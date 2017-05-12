@@ -13,16 +13,18 @@ import Foundation
 import SystemConfiguration
 
 let cellId = "cellId"
+var viewWidth: Float = 0
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     var objects = [JSON]()
     //create an array which contain all the posts
-    //var posts = [Post]()
     var posts = [Story]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewWidth = Float(view.frame.width)
         
         if !isInternetAvailable() {
             self.createAlert(titleMsg: "Alert", messageMsg: "ooop something wrong~")
@@ -113,7 +115,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
-            let fixedHight: CGFloat = 4 + 40 + 2 + 300 + 2
+            let fixedHight: CGFloat = 4 + 40 + 2 + 300 + 2 + 600
             return CGSize(width: view.frame.width, height: rect.height + fixedHight + 26)
         }
         

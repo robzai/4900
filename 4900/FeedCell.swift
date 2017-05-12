@@ -13,10 +13,14 @@ class FeedCell: UICollectionViewCell{
     
     let baseImgURL = "http://4900.onebite.tk/pics/"
     let exten = ".png"
+    var imageViews = [UIImageView]()
+    var vHight: Float = 0
     
     //var post: Post? {
     var post: Story? {
         didSet{
+            imageViews.removeAll()
+            vHight = 0
             if let title = post?.action{
                 if let group = post?.group{
                     let attriabutedText = NSMutableAttributedString(string: title + " " + group, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
@@ -33,24 +37,38 @@ class FeedCell: UICollectionViewCell{
             }
             
             if let statusText = post?.story{
+                //estimate the height of the entire text
+                let rect = NSString(string: statusText).boundingRect(with: CGSize(width: Int(viewWidth), height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
+                vHight = vHight + Float(rect.height)
                 statusTextView.text = statusText
             }
             
             if let imgs = post?.imgs{
                 let imgsArray = imgs.components(separatedBy: ",")
-                for img in imgsArray{
-                    let imgURL = baseImgURL + img + exten
-                    getImage(imgURL, statusImageView)
-                    //print("\n" + img)
+                if imgsArray[0] != "" {
+                    for img in imgsArray{
+                        let imgURL = baseImgURL + img + exten
+                        //create imageView to contain photo of the story
+                        let statusImageView: UIImageView! = {
+                            let imageView = UIImageView()
+                            imageView.backgroundColor = UIColor.gray
+                            imageView.contentMode = .scaleAspectFit
+                            return imageView
+                        }()
+                        getImage(imgURL, statusImageView)
+                        imageViews.append(statusImageView)
+                        //                    print("000" + String(imageViews.count))
+                    }
                 }
             }
+            setuptViews()
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setuptViews()
+        //setuptViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,24 +92,23 @@ class FeedCell: UICollectionViewCell{
         return textView
     }()
     
-    //create imageView to contain photo of the story
-    let statusImageView: UIImageView! = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
     
     //add different conpolents to the cell and set it's constrain
     func setuptViews(){
         backgroundColor = UIColor.white
         addSubview(nameLabel)
         addSubview(statusTextView)
-        addSubview(statusImageView)
-        //put the name label on the screen and expand left to right, also 8 pix frome the left
         addConstraintsWithFormat(format: "H:|-8-[v0]|", views: nameLabel)
         addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusTextView)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusImageView)
-        addConstraintsWithFormat(format: "V:|-4-[v0(40)]-2-[v1]-2-[v2(300)]-2-|", views: nameLabel,statusTextView,statusImageView)
+        addConstraintsWithFormat(format: "V:|-4-[v0(40)]-2-[v1]|", views: nameLabel,statusTextView)
+        vHight = vHight + 4 + 40 + 2
+        
+        for imageV in imageViews{
+            addSubview(imageV)
+            addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: imageV)
+            addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(100)]|", views: imageV)
+            vHight = vHight + 100 + 4
+        }
         
     }
     
