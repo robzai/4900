@@ -18,7 +18,7 @@ let topMargin: Float = 4
 let bottomMargin: Float = 2
 let titleHight: Float = 40
 let spacing: Float = 2
-let imageHight: Float = 300
+let imageHight: Float = 335
 let offset: Float = 26
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
@@ -127,11 +127,11 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! FeedCell
         //clear subviews in the cell, otherwise subviews keep redrawing themselve in the cell
         let subviews = feedCell.subviews
-        print("****************\(subviews.count)")
+//        print("****************\(subviews.count)")
         for subview in subviews{
             subview.removeFromSuperview()
         }
-        print("--------------\(subviews.count)")
+//        print("--------------\(subviews.count)")
         //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
         feedCell.post = posts[indexPath.item]
         return feedCell
@@ -152,6 +152,17 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
             let imgsArray = imgs.components(separatedBy: ",")
             if imgsArray[0] != "" {
                 for _ in imgsArray{
+                    count = count + 1
+                }
+            }
+            hight = hight + imageHight * count
+        }
+        
+        if let videos = posts[indexPath.item].video{
+            var count: Float = 0
+            let videosArray = videos.components(separatedBy: ",")
+            if videosArray[0] != "" {
+                for _ in videosArray{
                     count = count + 1
                 }
             }

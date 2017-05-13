@@ -15,7 +15,11 @@ class FeedCell: UICollectionViewCell{
     let exten = ".png"
     var imageViews = [UIImageView]()
     var vHight: Float = 0
-    let leftAndRightMargin: Float = 20
+    let leftAndRightMargin: Float = 10
+    let videoLeftMargin: Float = 2 //leftAndRightMargin - 8
+    let baseVideoURL = " src=\"https://www.youtube.com/embed/"
+    let baseVideoURL2 = "\" frameborder=\"0\" allowfullscreen></iframe>"
+    var videoViews = [UIWebView]()
     
     //var post: Post? {
     var post: Story? {
@@ -62,6 +66,25 @@ class FeedCell: UICollectionViewCell{
                     }
                 }
             }
+            
+            if let vidwos = post?.video{
+                let videosArray = vidwos.components(separatedBy: ",")
+                if videosArray[0] != "" {
+                    for video in videosArray{
+                        //create imageView to contain photo of the story
+                        let statusVideoView: UIWebView! = {
+                            let videoView = UIWebView()
+                            let embedURL = "<iframe width=\"\(viewWidth - leftAndRightMargin)\" height=\"315\"" + baseVideoURL + video + baseVideoURL2
+                            videoView.backgroundColor = UIColor(white: 0.95 , alpha: 1)
+                            videoView.loadHTMLString(embedURL, baseURL: nil)
+                            videoView.scrollView.isScrollEnabled = false
+                            return videoView
+                        }()
+                        videoViews.append(statusVideoView)
+                    }
+                }
+            }
+            
             setuptViews()
         }
     }
@@ -105,7 +128,14 @@ class FeedCell: UICollectionViewCell{
             addSubview(imageV)
             addConstraintsWithFormat(format: "H:|-\(leftAndRightMargin)-[v0]-\(leftAndRightMargin)-|", views: imageV)
             addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(\(imageHight))]", views: imageV)
-            vHight = vHight + 300 + 4
+            vHight = vHight + imageHight + spacing
+        }
+        
+        for videoV in videoViews{
+            addSubview(videoV)
+            addConstraintsWithFormat(format: "H:|-\(videoLeftMargin)-[v0]-\(leftAndRightMargin)-|", views: videoV)
+            addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(\(imageHight))]", views: videoV)
+            vHight = vHight + imageHight + spacing
         }
 
     }
