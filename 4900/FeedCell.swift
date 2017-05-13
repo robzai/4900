@@ -15,6 +15,7 @@ class FeedCell: UICollectionViewCell{
     let exten = ".png"
     var imageViews = [UIImageView]()
     var vHight: Float = 0
+    let leftAndRightMargin: Float = 4
     
     //var post: Post? {
     var post: Story? {
@@ -99,15 +100,15 @@ class FeedCell: UICollectionViewCell{
         addSubview(nameLabel)
         addSubview(statusTextView)
         addConstraintsWithFormat(format: "H:|-8-[v0]|", views: nameLabel)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusTextView)
-        addConstraintsWithFormat(format: "V:|-4-[v0(40)]-2-[v1]|", views: nameLabel,statusTextView)
+        addConstraintsWithFormat(format: "H:|-\(leftAndRightMargin)-[v0]-\(leftAndRightMargin)-|", views: statusTextView)
+        addConstraintsWithFormat(format: "V:|-\(topMargin)-[v0(\(titleHight))]-\(spacing)-[v1]", views: nameLabel,statusTextView)
         vHight = vHight + 4 + 40 + 2
         
         for imageV in imageViews{
             addSubview(imageV)
-            addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: imageV)
-            addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(100)]|", views: imageV)
-            vHight = vHight + 100 + 4
+            addConstraintsWithFormat(format: "H:|-\(leftAndRightMargin)-[v0]-\(leftAndRightMargin)-|", views: imageV)
+            addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(\(imageHight))]", views: imageV)
+            vHight = vHight + 300 + 4
         }
         
     }

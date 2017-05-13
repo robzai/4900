@@ -12,10 +12,17 @@ import SwiftyJSON
 import Foundation
 import SystemConfiguration
 
-let cellId = "cellId"
+
 var viewWidth: Float = 0
+let topMargin: Float = 4
+let bottomMargin: Float = 2
+let titleHight: Float = 40
+let spacing: Float = 2
+let imageHight: Float = 300
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+  
+    let cellId = "cellId"
     
     var objects = [JSON]()
     //create an array which contain all the posts
@@ -112,14 +119,26 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
     
     //specify the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var hight: Float = topMargin + titleHight + spacing + bottomMargin
         if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
-            let fixedHight: CGFloat = 4 + 40 + 2 + 300 + 2 + 600
-            return CGSize(width: view.frame.width, height: rect.height + fixedHight + 26)
+            hight = hight + Float(rect.height)
         }
         
-        return CGSize(width: view.frame.width, height: 400)
+        if let imgs = posts[indexPath.item].imgs{
+            var count: Float = 0
+            let imgsArray = imgs.components(separatedBy: ",")
+            if imgsArray[0] != "" {
+                for _ in imgsArray{
+                    count = count + 1
+                }
+            }
+            hight = hight + imageHight * count
+        }
+        
+        return CGSize(width: view.frame.width, height: CGFloat(hight + 26))
     }
 
 }
