@@ -107,7 +107,7 @@ class FeedCell: UICollectionViewCell{
             addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(\(imageHight))]", views: imageV)
             vHight = vHight + 300 + 4
         }
-        
+
     }
     
     //https://www.youtube.com/watch?v=Z6D68MMx2pw

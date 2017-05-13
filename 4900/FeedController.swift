@@ -53,7 +53,6 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
 
     func refreshData(){
         if !isInternetAvailable() {
-            //self.refresher.endRefreshing()
             self.createAlert(titleMsg: "Alert", messageMsg: "ooop no internet connection~")
         }
         Alamofire.request(dataSource).responseJSON {
@@ -102,6 +101,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return (isReachable && !needsConnection)
     }
     
+    //create the alert message
     //http://stackoverflow.com/questions/24195310/how-to-add-an-action-to-a-uialertview-button-using-swift-ios
     func createAlert(titleMsg:String, messageMsg:String){
         let alert = UIAlertController(title: titleMsg, message: messageMsg, preferredStyle: UIAlertControllerStyle.alert)
@@ -121,16 +121,19 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return posts.count
     }
     
-    //actually return the cells for each of the items
+    //actually return the cells for each of the items, cells will reload when scroll or refresh
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! FeedCell
-        
-        //do the post setting, which means it will execute the didSet inside the FeedCell.post
-//        print("\(posts.count)")
-//        print("\(indexPath.item)")
-//        print("\n")
+        //clear subviews in the cell, otherwise subviews keep redrawing themselve in the cell
+        let subviews = feedCell.subviews
+        print("****************\(subviews.count)")
+        for subview in subviews{
+            subview.removeFromSuperview()
+        }
+        print("--------------\(subviews.count)")
+        //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
         feedCell.post = posts[indexPath.item]
-        
         return feedCell
     }
     
