@@ -15,7 +15,7 @@ class FeedCell: UICollectionViewCell{
     let exten = ".png"
     var imageViews = [UIImageView]()
     var vHight: Float = 0
-    let leftAndRightMargin: Float = 4
+    let leftAndRightMargin: Float = 20
     
     //var post: Post? {
     var post: Story? {
@@ -52,13 +52,13 @@ class FeedCell: UICollectionViewCell{
                         //create imageView to contain photo of the story
                         let statusImageView: UIImageView! = {
                             let imageView = UIImageView()
-                            imageView.backgroundColor = UIColor.gray
+                            imageView.backgroundColor = UIColor(white: 0.95 , alpha: 1)
+
                             imageView.contentMode = .scaleAspectFit
                             return imageView
                         }()
                         getImage(imgURL, statusImageView)
                         imageViews.append(statusImageView)
-                        //                    print("000" + String(imageViews.count))
                     }
                 }
             }
@@ -68,7 +68,6 @@ class FeedCell: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         //setuptViews()
     }
     
@@ -86,8 +85,6 @@ class FeedCell: UICollectionViewCell{
     //create textView to contain the content of the story
     let statusTextView: UITextView = {
         let textView = UITextView()
-        //textView.text = "content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-"
-        //textView.font = UIFont.systemFont(ofSize: 14)
         textView.isEditable = false
         textView.isScrollEnabled = false
         return textView
@@ -102,7 +99,7 @@ class FeedCell: UICollectionViewCell{
         addConstraintsWithFormat(format: "H:|-8-[v0]|", views: nameLabel)
         addConstraintsWithFormat(format: "H:|-\(leftAndRightMargin)-[v0]-\(leftAndRightMargin)-|", views: statusTextView)
         addConstraintsWithFormat(format: "V:|-\(topMargin)-[v0(\(titleHight))]-\(spacing)-[v1]", views: nameLabel,statusTextView)
-        vHight = vHight + 4 + 40 + 2
+        vHight = vHight + topMargin + titleHight + offset
         
         for imageV in imageViews{
             addSubview(imageV)
@@ -127,9 +124,7 @@ class FeedCell: UICollectionViewCell{
                         
                         imageView.image = image
                         imageView.alpha = 0
-                        UIView.animate(withDuration: 2.5, animations: {
-                            imageView.alpha = 1.0
-                        })
+                        UIView.animate(withDuration: 1.0, animations: { imageView.alpha = 1.0 })
                     })
                 }
             }

@@ -98,12 +98,12 @@
 				B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */,
 				B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */,
 				B3A3B3101EBADB9900E20C30 /* FeedController.swift */,
+				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
+				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
 				B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */,
 				B3A3B31A1EBADB9900E20C30 /* Info.plist */,
-				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
-				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 			);
 			path = 4900;
 			sourceTree = "<group>";

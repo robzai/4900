@@ -15,7 +15,7 @@ import DKImagePickerController
 class PostStoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var images = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+//    var images = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     
     private let leftAndRightPaddings: CGFloat = 8.0
     private let numberOfItemsPerRRow: CGFloat = 3.0

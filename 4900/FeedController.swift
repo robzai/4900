@@ -19,12 +19,14 @@ let bottomMargin: Float = 2
 let titleHight: Float = 40
 let spacing: Float = 2
 let imageHight: Float = 300
+let offset: Float = 26
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
   
+    let dataSource = "http://4900.onebite.tk/jason.php"
     let cellId = "cellId"
+    var refresher: UIRefreshControl!
     
-    var objects = [JSON]()
     //create an array which contain all the posts
     var posts = [Story]()
     
@@ -32,19 +34,34 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         super.viewDidLoad()
         
         viewWidth = Float(view.frame.width)
+
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
+        //when the refresher is actived call the cunction in selector
+        refresher.addTarget( self, action: #selector(FeedController.refreshData), for: .valueChanged)
+        collectionView?.addSubview(refresher)
         
+        refreshData()
+        
+        navigationItem.title = "RMHC"
+        //collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        //register cells for the collection view
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        
+    }
+
+    func refreshData(){
         if !isInternetAvailable() {
-            self.createAlert(titleMsg: "Alert", messageMsg: "ooop something wrong~")
+            //self.refresher.endRefreshing()
+            self.createAlert(titleMsg: "Alert", messageMsg: "ooop no internet connection~")
         }
-        
-        
-        Alamofire.request("http://4900.onebite.tk/jason.php").responseJSON {
+        Alamofire.request(dataSource).responseJSON {
             response in
             if let  rawJSON = response.result.value {
                 let json = JSON(rawJSON)
-                
-                for (_, subJSON) : (String, JSON) in json
-                {
+                self.posts.removeAll()
+                for (_, subJSON) : (String, JSON) in json{
                     
                     let jReason = subJSON["reason"].stringValue
                     let jAction = subJSON["action"].stringValue
@@ -54,23 +71,16 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
                     let jVideo = subJSON["video"].stringValue
                     let jPostTime = subJSON["posttime"].stringValue
                     
-                    //print("\(reason) -> \(action)")
                     let story = Story(reason: jReason, action: jAction, group: jGroup, story: jStory, imgs: jImgs, video: jVideo, postTime: jPostTime)
                     self.posts.append(story)
                     
                 }
+                self.collectionView?.reloadData()
+                self.refresher.endRefreshing()
             }
-            self.collectionView?.reloadData()
         }
-        
-        navigationItem.title = "RMHC"
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
-        //register cells for the collection view
-        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
-        
     }
-
+    
     func isInternetAvailable() -> Bool
     {
         var zeroAddress = sockaddr_in()
@@ -92,11 +102,15 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return (isReachable && !needsConnection)
     }
     
+    //http://stackoverflow.com/questions/24195310/how-to-add-an-action-to-a-uialertview-button-using-swift-ios
     func createAlert(titleMsg:String, messageMsg:String){
         let alert = UIAlertController(title: titleMsg, message: messageMsg, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            self.refresher.endRefreshing()
+        }
+        alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -112,6 +126,9 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! FeedCell
         
         //do the post setting, which means it will execute the didSet inside the FeedCell.post
+//        print("\(posts.count)")
+//        print("\(indexPath.item)")
+//        print("\n")
         feedCell.post = posts[indexPath.item]
         
         return feedCell
@@ -120,7 +137,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
     //specify the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        var hight: Float = topMargin + titleHight + spacing + bottomMargin
+        var hight: Float = topMargin + titleHight + spacing + offset + bottomMargin
         if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
