@@ -25,6 +25,7 @@ class FeedCell: UICollectionViewCell{
     var post: Story? {
         didSet{
             imageViews.removeAll()
+            videoViews.removeAll()
             vHight = 0
             if let title = post?.action{
                 if let group = post?.group{

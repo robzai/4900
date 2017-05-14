@@ -128,8 +128,8 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         //clear subviews in the cell, otherwise subviews keep redrawing themselve in the cell
         let subviews = feedCell.subviews
 //        print("****************\(subviews.count)")
-        for subview in subviews{
-            subview.removeFromSuperview()
+        for var i in (0..<subviews.count) {
+            subviews[i].removeFromSuperview()
         }
 //        print("--------------\(subviews.count)")
         //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
