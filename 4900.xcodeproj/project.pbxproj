@@ -19,6 +19,7 @@
 		B3A3B3141EBADB9900E20C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3121EBADB9900E20C30 /* Main.storyboard */; };
 		B3A3B3161EBADB9900E20C30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3151EBADB9900E20C30 /* Assets.xcassets */; };
 		B3A3B3191EBADB9900E20C30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */; };
+		B3EDA90B1EC5215D00D00C2A /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */; };
 		E7551EE59856427A4267736C /* Pods_4900.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E391DE0ABDF5764EF3A07BC5 /* Pods_4900.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		B3A3B3151EBADB9900E20C30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3A3B3181EBADB9900E20C30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3A3B31A1EBADB9900E20C30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		D68A96AC2AC93EA01585AFAA /* Pods-4900.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-4900.release.xcconfig"; path = "Pods/Target Support Files/Pods-4900/Pods-4900.release.xcconfig"; sourceTree = "<group>"; };
 		E391DE0ABDF5764EF3A07BC5 /* Pods_4900.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_4900.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,7 +125,10 @@
 				20FD696D1EC4334B00BDF6DB /* Classes */,
 				8D144DCC1EBF0A82009C531C /* Models */,
 				B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */,
+				B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */,
 				B3A3B3101EBADB9900E20C30 /* FeedController.swift */,
+				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
+				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
 				B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */,
@@ -261,6 +266,7 @@
 			files = (
 				B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */,
 				20FD69771EC4334C00BDF6DB /* BEMCheckBox.m in Sources */,
+				B3EDA90B1EC5215D00D00C2A /* FeedCell.swift in Sources */,
 				B3A3B30F1EBADB9900E20C30 /* AppDelegate.swift in Sources */,
 				8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */,
 				20FD69791EC4334C00BDF6DB /* BEMPathManager.m in Sources */,

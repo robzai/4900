@@ -12,69 +12,74 @@ import SwiftyJSON
 import Foundation
 import SystemConfiguration
 
-let cellId = "cellId"
 
-//a model obj for each post
-class Post{
-    var title: String?
-    var statusText: String?
-    var statusImageName: String?
-}
+var viewWidth: Float = 0
+let topMargin: Float = 4
+let bottomMargin: Float = 2
+let titleHight: Float = 40
+let spacing: Float = 2
+let imageHight: Float = 335
+let offset: Float = 26
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+  
+    let dataSource = "http://4900.onebite.tk/jason.php"
+    let cellId = "cellId"
+    var refresher: UIRefreshControl!
     
-    var objects = [JSON]()
     //create an array which contain all the posts
-    var posts = [Post]()
+    var posts = [Story]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewWidth = Float(view.frame.width)
+
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "pull to refresh")
+        //when the refresher is actived call the cunction in selector
+        refresher.addTarget( self, action: #selector(FeedController.refreshData), for: .valueChanged)
+        collectionView?.addSubview(refresher)
+        
+        refreshData()
+        
+        navigationItem.title = "RMHC"
+        //collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        //register cells for the collection view
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        
+    }
+
+    func refreshData(){
         if !isInternetAvailable() {
-            self.createAlert(titleMsg: "Alert", messageMsg: "ooop something wrong~")
+            self.createAlert(titleMsg: "Alert", messageMsg: "ooop no internet connection~")
         }
-        
-//        let post1 = Post()
-//        post1.title = "title of post 1"
-//        post1.statusText = "content of post 1_content of post 1_content of post 1_content of post 1_"
-//        post1.statusImageName = "pic1"
-//        
-//        let post2 = Post()
-//        post2.title = "title of post 2"
-//        post2.statusText = "content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_content of post 2_"
-//        post2.statusImageName = "pic2"
-//        
-//        posts.append(post1)
-//        posts.append(post2)
-//        
-//        navigationItem.title = "RMHC"
-//        collectionView?.alwaysBounceVertical = true
-//        collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
-//        //register cells for the collection view
-//        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
-        Alamofire.request("http://4900.onebite.tk/jason.php").responseJSON {
+        Alamofire.request(dataSource).responseJSON {
             response in
             if let  rawJSON = response.result.value {
                 let json = JSON(rawJSON)
-                
-                for (_, subJSON) : (String, JSON) in json
-                {
+                self.posts.removeAll()
+                for (_, subJSON) : (String, JSON) in json{
                     
-                    let pk = subJSON["id"].stringValue
-                    let action = subJSON["action"]
+                    let jReason = subJSON["reason"].stringValue
+                    let jAction = subJSON["action"].stringValue
+                    let jGroup = subJSON["groupname"].stringValue
+                    let jStory = subJSON["textstories"].stringValue
+                    let jImgs = subJSON["images"].stringValue
+                    let jVideo = subJSON["video"].stringValue
+                    let jPostTime = subJSON["posttime"].stringValue
                     
-                    print("\(pk) -> \(action)")
-                    //self.objects.append(subJSON)
-                    //print("\(key) -> ")
+                    let story = Story(reason: jReason, action: jAction, group: jGroup, story: jStory, imgs: jImgs, video: jVideo, postTime: jPostTime)
+                    self.posts.append(story)
                     
                 }
+                self.collectionView?.reloadData()
+                self.refresher.endRefreshing()
             }
-            //self.collectionView?.reloadData()
         }
     }
-
+    
     func isInternetAvailable() -> Bool
     {
         var zeroAddress = sockaddr_in()
@@ -96,11 +101,16 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return (isReachable && !needsConnection)
     }
     
+    //create the alert message
+    //http://stackoverflow.com/questions/24195310/how-to-add-an-action-to-a-uialertview-button-using-swift-ios
     func createAlert(titleMsg:String, messageMsg:String){
         let alert = UIAlertController(title: titleMsg, message: messageMsg, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            self.refresher.endRefreshing()
+        }
+        alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -111,106 +121,57 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         return posts.count
     }
     
-    //actually return the cells for each of the items
+    //actually return the cells for each of the items, cells will reload when scroll or refresh
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! FeedCell
-        
-        //do the post setting, which means it will execute the didSet inside the FeedCell.post
+        //clear subviews in the cell, otherwise subviews keep redrawing themselve in the cell
+        let subviews = feedCell.subviews
+//        print("****************\(subviews.count)")
+        for var i in (0..<subviews.count) {
+            subviews[i].removeFromSuperview()
+        }
+//        print("--------------\(subviews.count)")
+        //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
         feedCell.post = posts[indexPath.item]
-        
         return feedCell
     }
     
     //specify the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let statusText = posts[indexPath.item].statusText{
+        
+        var hight: Float = topMargin + titleHight + spacing + offset + bottomMargin
+        if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
-            let fixedHight: CGFloat = 4 + 40 + 2 + 300
-            return CGSize(width: view.frame.width, height: rect.height + fixedHight + 26)
+            hight = hight + Float(rect.height)
         }
         
-        return CGSize(width: view.frame.width, height: 400)
-    }
-
-}
-
-//create and register cells, every time a cell is dequeue this will be called
-class FeedCell: UICollectionViewCell{
-    
-    var post: Post? {
-        didSet{
-            if let title = post?.title{
-                let attriabutedText = NSMutableAttributedString(string: title, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)])
-                //bottom line text
-                attriabutedText.append(NSAttributedString(string: "\nMay 4", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12), NSForegroundColorAttributeName: UIColor(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
-                
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 4
-                attriabutedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attriabutedText.string.characters.count))
-                
-                nameLabel.attributedText = attriabutedText
+        if let imgs = posts[indexPath.item].imgs{
+            var count: Float = 0
+            let imgsArray = imgs.components(separatedBy: ",")
+            if imgsArray[0] != "" {
+                for _ in imgsArray{
+                    count = count + 1
+                }
             }
-            
-            if let statusText = post?.statusText{
-                statusTextView.text = statusText
-            }
-            
-            if let statusImage = post?.statusImageName{
-                statusImageView.image = UIImage(named: statusImage)
-            }
+            hight = hight + imageHight * count
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         
-        setuptViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //create a label to contain the title of the story
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    //create textView to contain the content of the story
-    let statusTextView: UITextView = {
-        let textView = UITextView()
-        //textView.text = "content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-content can goes here-"
-        //textView.font = UIFont.systemFont(ofSize: 14)
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        return textView
-    }()
-    
-    //create imageView to contain photo of the story
-    let statusImageView: UIImageView = {
-        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "pic1")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    //add different conpolents to the cell and set it's constrain
-    func setuptViews(){
-        backgroundColor = UIColor.white
-        addSubview(nameLabel)
-        addSubview(statusTextView)
-        addSubview(statusImageView)
-        //put the name label on the screen and expand left to right, also 8 pix frome the left
-        addConstraintsWithFormat(format: "H:|-8-[v0]|", views: nameLabel)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusTextView)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusImageView)
-        addConstraintsWithFormat(format: "V:|-4-[v0(40)]-2-[v1]-2-[v2(300)]|", views: nameLabel,statusTextView,statusImageView)
+        if let videos = posts[indexPath.item].video{
+            var count: Float = 0
+            let videosArray = videos.components(separatedBy: ",")
+            if videosArray[0] != "" {
+                for _ in videosArray{
+                    count = count + 1
+                }
+            }
+            hight = hight + imageHight * count
+        }
         
+        return CGSize(width: view.frame.width, height: CGFloat(hight + 26))
     }
-    
+
 }
 
 extension UIView {
