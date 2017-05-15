@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CustomTabBarContraoller: UITabBarController {
-
+class CustomTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,19 +19,25 @@ class CustomTabBarContraoller: UITabBarController {
         navationConrtoller.title = "Home"
         navationConrtoller.tabBarItem.image = UIImage(named: "home")
         
-        //second button to the tab bar
-        let newPostController = UIViewController()
+        
+        let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostStoryController")
+        //self.present(newPostController, animated: false, completion: nil)
         newPostController.navigationItem.title = "New Post"
+        
         let newPostNavtionController = UINavigationController(rootViewController: newPostController)
         newPostNavtionController.title = "New Post"
         newPostNavtionController.tabBarItem.image = UIImage(named: "newPost")
         
         viewControllers = [navationConrtoller, newPostNavtionController]
+        tabBar.isTranslucent = false
+        tabBar.layer.borderWidth = 0.2
+        tabBar.layer.borderColor = UIColor(red:0.0/229.0, green:0.0/231.0, blue:0.0/235.0, alpha:0.2).cgColor
+        tabBar.clipsToBounds = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
