@@ -114,6 +114,14 @@ class FeedCell: UICollectionViewCell{
         return textView
     }()
     
+    let btn: UIButton = {
+        let fullTextButton = UIButton()
+        fullTextButton.setTitle("Full text", for: .normal)
+        fullTextButton.setTitleColor(UIColor.black, for: .normal)
+        fullTextButton.backgroundColor = UIColor.blue
+//        fullTextButton.addTarget(self, action: #selector(pressButton(button:)), for: .touchUpInside)
+        return fullTextButton
+    }()
     
     //add different conpolents to the cell and set it's constrain
     func setuptViews(){
@@ -138,7 +146,12 @@ class FeedCell: UICollectionViewCell{
             addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(\(imageHight))]", views: videoV)
             vHight = vHight + imageHight + spacing
         }
-
+        
+        addSubview(btn)
+        addConstraintsWithFormat(format: "H:|-3-[v0(80)]", views: btn)
+        addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(30)]", views: btn)
+        vHight = vHight + 30 + spacing
+        
     }
     
     //https://www.youtube.com/watch?v=Z6D68MMx2pw

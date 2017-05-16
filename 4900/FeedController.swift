@@ -49,6 +49,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         //register cells for the collection view
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         
+        
     }
 
     func refreshData(){
@@ -114,6 +115,10 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         self.present(alert, animated: true, completion: nil)
     }
     
+    func pressButton(button: UIButton) {
+        print("pressed!")
+    }
+    
     // MARK: - Collection View
     
     //return number of items in the session(collection view)
@@ -134,13 +139,14 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
 //        print("--------------\(subviews.count)")
         //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
         feedCell.post = posts[indexPath.item]
+        feedCell.btn.addTarget(self, action: #selector(FeedController.pressButton(button:)), for: .touchUpInside)
         return feedCell
     }
     
     //specify the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        var hight: Float = topMargin + titleHight + spacing + offset + bottomMargin
+        var hight: Float = topMargin + titleHight + spacing + offset + bottomMargin + 30
         if let statusText = posts[indexPath.item].story{
             //estimate the height of the entire text
             let rect = NSString(string: statusText).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)], context: nil)
