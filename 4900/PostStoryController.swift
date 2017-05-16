@@ -64,12 +64,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
                     print("end line59")
                     
                     let imageUI = image! as UIImage
-<<<<<<< HEAD
-                    //let imageData = UIImageJPEGRepresentation(image!, 1)
-=======
-                    let imageData = UIImageJPEGRepresentation(image!, 1)
->>>>>>> 5eca6626743f4ab1be52d584ff9f67e42440373d
-
                     self.piccount += 1
                     //var imageString = "imageNumber" + String(self.piccount)
                     self.param.addEntries(from: [ "image" + String(self.piccount) : imageUI as UIImage])
@@ -85,11 +79,7 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
             for each in assets{
                 each.fetchOriginalImage(false){
                     (image: UIImage?, info: [AnyHashable : Any]?) in
-<<<<<<< HEAD
-                    //let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
-=======
-                    let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
->>>>>>> 5eca6626743f4ab1be52d584ff9f67e42440373d
+
                     //print(String(data: (imageData ?? NSData()) as Data, encoding: String.Encoding.utf8))
                     
                     //!!!!!
@@ -247,11 +237,8 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         print(groupnametext.text! as String)
         print(agreetoshare)
         
-<<<<<<< HEAD
         let request = NSMutableURLRequest(url: NSURL(string: "http://4900new.onebite.tk/update.php")! as URL)
-=======
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost/~yao/volunteer/update.php")! as URL)
->>>>>>> 5eca6626743f4ab1be52d584ff9f67e42440373d
+        
         request.httpMethod = "POST"
         
         let boundary = generateBoundaryString()
