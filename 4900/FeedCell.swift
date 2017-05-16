@@ -11,7 +11,7 @@ import UIKit
 //create and register cells, every time a cell is dequeue this will be called
 class FeedCell: UICollectionViewCell{
     
-    let baseImgURL = "http://4900.onebite.tk/pics/"
+    let baseImgURL = "http://4900new.onebite.tk/pics/"
     let exten = ".png"
     var imageViews = [UIImageView]()
     var vHight: Float = 0
@@ -114,14 +114,13 @@ class FeedCell: UICollectionViewCell{
         return textView
     }()
     
-    let btn: UIButton = {
-        let fullTextButton = UIButton()
-        fullTextButton.setTitle("Full text", for: .normal)
-        fullTextButton.setTitleColor(UIColor.black, for: .normal)
-        fullTextButton.backgroundColor = UIColor.blue
-//        fullTextButton.addTarget(self, action: #selector(pressButton(button:)), for: .touchUpInside)
-        return fullTextButton
-    }()
+//    let btn: UIButton = {
+//        let fullTextButton = UIButton()
+//        fullTextButton.setTitle("Full text", for: .normal)
+//        fullTextButton.setTitleColor(UIColor.black, for: .normal)
+//        fullTextButton.backgroundColor = UIColor.blue
+//        return fullTextButton
+//    }()
     
     //add different conpolents to the cell and set it's constrain
     func setuptViews(){
@@ -147,10 +146,10 @@ class FeedCell: UICollectionViewCell{
             vHight = vHight + imageHight + spacing
         }
         
-        addSubview(btn)
-        addConstraintsWithFormat(format: "H:|-3-[v0(80)]", views: btn)
-        addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(30)]", views: btn)
-        vHight = vHight + 30 + spacing
+//        addSubview(btn)
+//        addConstraintsWithFormat(format: "H:|-3-[v0(80)]", views: btn)
+//        addConstraintsWithFormat(format: "V:|-\(vHight)-[v0(30)]", views: btn)
+//        vHight = vHight + 30 + spacing
         
     }
     

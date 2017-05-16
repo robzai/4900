@@ -23,7 +23,7 @@ let offset: Float = 26
 
 class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
   
-    let dataSource = "http://4900.onebite.tk/jason.php"
+    let dataSource = "http://4900new.onebite.tk/json.php"
     let cellId = "cellId"
     var refresher: UIRefreshControl!
     
@@ -139,7 +139,7 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
 //        print("--------------\(subviews.count)")
         //do the post setting, which means it will execute the didSet inside the FeedCell.post, here will readd all the subviews
         feedCell.post = posts[indexPath.item]
-        feedCell.btn.addTarget(self, action: #selector(FeedController.pressButton(button:)), for: .touchUpInside)
+//        feedCell.btn.addTarget(self, action: #selector(FeedController.pressButton(button:)), for: .touchUpInside)
         return feedCell
     }
     
