@@ -147,6 +147,8 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        navigationItem.title = "New Post"
         //assign checkbox delegate
         box.delegate = self
         //set story textView boarder color
@@ -154,18 +156,21 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         storytext.layer.borderWidth = 0.5
         
         //6
-        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Post"))
+        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PostStoryController.post))
         self.navigationItem.rightBarButtonItem = rightBarButton
         // Changing the colour of the bar button items
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
-        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Cancel"))
+        let leftBarButton = UIBarButtonItem(title: "Cancle", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PostStoryController.cancle))
         self.navigationItem.leftBarButtonItem = leftBarButton
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
 //        let width = ((collectionView!.frame.width) - leftAndRightPaddings) / numberOfItemsPerRRow
 //        let layout = self.collectionView.collectionViewLayout as! UICollectionViewLayout
         //layout.itemSize = CGSizeMake(width, width + heightAjustment)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostStoryController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -223,6 +228,10 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
 //        return cell
     }
 
+    //http://stackoverflow.com/questions/38509896/how-to-call-tab-bar-view-controller-by-click-button-function-in-swift
+    func cancle() {
+        self.tabBarController?.selectedIndex = 0
+    }
     
     //yao editted from here
     func didTap(_ checkBox: BEMCheckBox) {
@@ -233,7 +242,7 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     //pass images and text to php
-    func Post(){
+    func post(){
         print(groupnametext.text! as String)
         print(agreetoshare)
         
@@ -288,8 +297,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
             }
         }
         
-        
-        
         task.resume()
         
     }
@@ -335,9 +342,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = self.assets![indexPath.row]
         asset.fetchAVAssetWithCompleteBlock { (avAsset, info) in
@@ -345,6 +349,11 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
                 self.playVideo(avAsset!)
             })
         }
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
 

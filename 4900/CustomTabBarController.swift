@@ -22,11 +22,13 @@ class CustomTabBarController: UITabBarController {
         
         let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostStoryController")
         //self.present(newPostController, animated: false, completion: nil)
-        newPostController.navigationItem.title = "New Post"
+        //newPostController.navigationItem.title = "New Post"
         
         let newPostNavtionController = UINavigationController(rootViewController: newPostController)
         newPostNavtionController.title = "New Post"
         newPostNavtionController.tabBarItem.image = UIImage(named: "newPost")
+        
+        
         
         viewControllers = [navationConrtoller, newPostNavtionController]
         tabBar.isTranslucent = false
