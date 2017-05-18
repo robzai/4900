@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         application.statusBarStyle = .lightContent
         
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enable = true 
         
         return true
     }
