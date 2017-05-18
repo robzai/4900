@@ -14,6 +14,9 @@
 		8D144DCB1EBEE7E5009C531C /* PostStoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */; };
 		8D144DCE1EBF0AB9009C531C /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCD1EBF0AB9009C531C /* Story.swift */; };
 		8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DD51EBF1733009C531C /* CustomTabBarController.swift */; };
+		B339DAA71ECC118700F57F29 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA61ECC118700F57F29 /* PageViewController.swift */; };
+		B339DAA91ECC278900F57F29 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */; };
+		B339DAAB1ECC2BC200F57F29 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */; };
 		B3A3B30F1EBADB9900E20C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */; };
 		B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3B3101EBADB9900E20C30 /* FeedController.swift */; };
 		B3A3B3141EBADB9900E20C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3121EBADB9900E20C30 /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 		8D144DCD1EBF0AB9009C531C /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		8D144DD51EBF1733009C531C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		B040F53E6D81ECE3F61A3253 /* Pods-4900.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-4900.debug.xcconfig"; path = "Pods/Target Support Files/Pods-4900/Pods-4900.debug.xcconfig"; sourceTree = "<group>"; };
+		B339DAA61ECC118700F57F29 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		B3A3B30B1EBADB9900E20C30 /* 4900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4900.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A3B3101EBADB9900E20C30 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -127,13 +133,16 @@
 				B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */,
 				B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */,
 				B3A3B3101EBADB9900E20C30 /* FeedController.swift */,
+				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
+				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
+				B339DAA61ECC118700F57F29 /* PageViewController.swift */,
+				B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */,
+				B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
 				B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */,
 				B3A3B31A1EBADB9900E20C30 /* Info.plist */,
-				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
 				20FD697A1EC433B500BDF6DB /* CheckMarkHeader.h */,
-				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 			);
 			path = 4900;
 			sourceTree = "<group>";
@@ -185,6 +194,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = B3A3B3021EBADB9900E20C30;
 			productRefGroup = B3A3B30C1EBADB9900E20C30 /* Products */;
@@ -262,8 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B339DAAB1ECC2BC200F57F29 /* SecondPageViewController.swift in Sources */,
+				B339DAA91ECC278900F57F29 /* FirstPageViewController.swift in Sources */,
 				B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */,
 				20FD69771EC4334C00BDF6DB /* BEMCheckBox.m in Sources */,
+				B339DAA71ECC118700F57F29 /* PageViewController.swift in Sources */,
 				B3EDA90B1EC5215D00D00C2A /* FeedCell.swift in Sources */,
 				B3A3B30F1EBADB9900E20C30 /* AppDelegate.swift in Sources */,
 				8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */,

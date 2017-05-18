@@ -69,8 +69,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
                     self.param.addEntries(from: [ "image" + String(self.piccount) : imageUI as UIImage])
                     print("image" + String(self.piccount) + "added")
                     
-//                    self.env64string = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-//                    self.env64strings[env64string] = image // the env64strings is a dictionary.
                 })
                 
             }
@@ -79,15 +77,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
             for each in assets{
                 each.fetchOriginalImage(false){
                     (image: UIImage?, info: [AnyHashable : Any]?) in
-
-                    //print(String(data: (imageData ?? NSData()) as Data, encoding: String.Encoding.utf8))
-                    
-                    //!!!!!
-//                    self.piccount += 1
-//                    self.param.addEntries(from: [ "imageNumber" + String(self.piccount) : image! as UIImage])
-//                    print("image" + String(self.piccount) + "added")
-//                    print( "String(image.dynamicType) -> \(type(of: image))")
-
                 
                 }
             }
@@ -105,28 +94,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         self.present(pickerController, animated: true) {}
 
     }
-    
-//    func getAssetThumbnail(asset: PHAsset, size: CGFloat) -> UIImage {
-//        let retinaScale = UIScreen.main.scale
-//        let retinaSquare = CGRect(origin: size * retinaScale, size: size * retinaScale)
-//        let cropSizeLength = min(asset.pixelWidth, asset.pixelHeight)
-//        let square = CGRectMake(0, 0, CGFloat(cropSizeLength), CGFloat(cropSizeLength))
-//        let cropRect = square.applying(CGAffineTransform(scaleX: 1.0/CGFloat(asset.pixelWidth), y: 1.0/CGFloat(asset.pixelHeight)))
-//        
-//        let manager = PHImageManager.default()
-//        let options = PHImageRequestOptions()
-//        var thumbnail = UIImage()
-//        
-//        options.isSynchronous = true
-//        options.deliveryMode = .highQualityFormat
-//        options.resizeMode = .exact
-//        options.normalizedCropRect = cropRect
-//        
-//        manager.requestImage(for: asset, targetSize: retinaSquare, contentMode: .aspectFit, options: options, resultHandler: {(result, info)->Void in
-//            thumbnail = result!
-//        })
-//        return thumbnail
-//    }
     
     //3
     func playVideo(_ asset: AVAsset) {
@@ -165,10 +132,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         self.navigationItem.leftBarButtonItem = leftBarButton
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         
-//        let width = ((collectionView!.frame.width) - leftAndRightPaddings) / numberOfItemsPerRRow
-//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewLayout
-        //layout.itemSize = CGSizeMake(width, width + heightAjustment)
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostStoryController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -201,31 +164,11 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
             asset.fetchImageWithSize(layout.itemSize.toPixel(), completeBlock: { image, info in
                 if cell.tag == tag {
                     imageView.image = image
-                    
-                    //var imageData = UIImagePNGRepresentation(image!) as Data
-                    //var imageStr = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                    
-                    //self.piccount += 1
-                    //var imageString = "imageNumber" + String(count)
-                    //self.param.addEntries(from: [ "imageNumber" + String(self.piccount) : image])
-                    //print("image" + String(self.piccount))
-                    
                 }
             })
         }
         
         return cell!
-        
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCell", for: indexPath) as! StoryCell
-//        
-//        //cell.layer.cornerRadius = 50
-//        cell.layer.borderColor = UIColor.lightGray.cgColor
-//        cell.layer.borderWidth = 0.2
-//
-//        cell.storyImage.image = UIImage(named: images[indexPath.row])
-//        cell.storyImage.contentMode = .scaleAspectFill
-//        
-//        return cell
     }
 
     //http://stackoverflow.com/questions/38509896/how-to-call-tab-bar-view-controller-by-click-button-function-in-swift
@@ -253,18 +196,7 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         let boundary = generateBoundaryString()
         
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-       // let imageData = UIImageJPEGRepresentation(UIImageView.image!, 0.5)
-        
-       // if(imageData==nil)  { return; }
-        
-//        let param = [
-//            "groupnametext" : groupnametext.text! as String,
-//            "reasontext" : reasontext.text! as String,
-//            "actiontext" : actiontext.text! as String,
-//            "storytext" : storytext.text! as String
-//            
-//        ] as NSMutableDictionary
+    
         if(agreetoshare){
             agreetosharestring = "true"
         }else{
@@ -277,8 +209,6 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
         self.param.addEntries(from: ["storytext" : storytext.text! as String])
         self.param.addEntries(from: ["agreetoshare" : agreetosharestring])
         self.param.addEntries(from: ["totalimage" : String(piccount) as String])
-        
-        
 
         request.httpBody = createBodyWithParameters(parameters: param, boundary: boundary) as Data
         let task = URLSession.shared.dataTask(with: request as URLRequest) {

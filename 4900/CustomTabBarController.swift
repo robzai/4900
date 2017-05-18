@@ -20,8 +20,8 @@ class CustomTabBarController: UITabBarController {
         navationConrtoller.tabBarItem.image = UIImage(named: "home")
         
         
-        let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostStoryController")
-        //self.present(newPostController, animated: false, completion: nil)
+//        let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostStoryController")
+        let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pageVC")
         //newPostController.navigationItem.title = "New Post"
         
         let newPostNavtionController = UINavigationController(rootViewController: newPostController)
