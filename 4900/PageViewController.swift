@@ -24,10 +24,28 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         dataSource = self
         delegate = self
         
+        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector(("Post")))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
+        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelButtonTapped(sender:)))
+
+        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.title = "New Post"
+        
         //set what is you first viewController
         if let firstVC = viewControllerArr.first{
             setViewControllers( [firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    func cancelButtonTapped(sender: UIBarButtonItem!){
+        print("Cancel tapped")
+
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedController") as! FeedController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     override func viewDidLayoutSubviews() {

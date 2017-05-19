@@ -22,7 +22,6 @@ class FirstPageViewController: UIViewController, UICollectionViewDelegate, UICol
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
     
     @IBAction func showImagePicker(_ sender: Any) {
         pickerController.defaultSelectedAssets = self.assets
@@ -52,16 +51,18 @@ class FirstPageViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        self.navigationItem.title = "New Post"
+
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Post"))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
-        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Cancel"))
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+//        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Post"))
+//        self.navigationItem.rightBarButtonItem = rightBarButton
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+//        
+//        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: Selector("Cancel"))
+//        self.navigationItem.leftBarButtonItem = leftBarButton
+//        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{

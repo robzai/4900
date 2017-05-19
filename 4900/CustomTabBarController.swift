@@ -27,9 +27,7 @@ class CustomTabBarController: UITabBarController {
         let newPostNavtionController = UINavigationController(rootViewController: newPostController)
         newPostNavtionController.title = "New Post"
         newPostNavtionController.tabBarItem.image = UIImage(named: "newPost")
-        
-        
-        
+ 
         viewControllers = [navationConrtoller, newPostNavtionController]
         tabBar.isTranslucent = false
         tabBar.layer.borderWidth = 0.2
