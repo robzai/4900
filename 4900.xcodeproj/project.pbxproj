@@ -14,9 +14,10 @@
 		8D144DCB1EBEE7E5009C531C /* PostStoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */; };
 		8D144DCE1EBF0AB9009C531C /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCD1EBF0AB9009C531C /* Story.swift */; };
 		8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DD51EBF1733009C531C /* CustomTabBarController.swift */; };
+		B3373E701ECFE8050096621A /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3373E6F1ECFE8050096621A /* FirstPageViewController.swift */; };
 		B339DAA71ECC118700F57F29 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA61ECC118700F57F29 /* PageViewController.swift */; };
-		B339DAA91ECC278900F57F29 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */; };
-		B339DAAB1ECC2BC200F57F29 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */; };
+		B339DAA91ECC278900F57F29 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */; };
+		B339DAAB1ECC2BC200F57F29 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */; };
 		B3A3B30F1EBADB9900E20C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */; };
 		B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3B3101EBADB9900E20C30 /* FeedController.swift */; };
 		B3A3B3141EBADB9900E20C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A3B3121EBADB9900E20C30 /* Main.storyboard */; };
@@ -57,9 +58,10 @@
 		8D144DCD1EBF0AB9009C531C /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		8D144DD51EBF1733009C531C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		B040F53E6D81ECE3F61A3253 /* Pods-4900.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-4900.debug.xcconfig"; path = "Pods/Target Support Files/Pods-4900/Pods-4900.debug.xcconfig"; sourceTree = "<group>"; };
+		B3373E6F1ECFE8050096621A /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		B339DAA61ECC118700F57F29 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
-		B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		B3A3B30B1EBADB9900E20C30 /* 4900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4900.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A3B3101EBADB9900E20C30 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -172,8 +174,9 @@
 				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
 				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 				B339DAA61ECC118700F57F29 /* PageViewController.swift */,
-				B339DAA81ECC278900F57F29 /* FirstPageViewController.swift */,
-				B339DAAA1ECC2BC200F57F29 /* SecondPageViewController.swift */,
+				B3373E6F1ECFE8050096621A /* FirstPageViewController.swift */,
+				B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */,
+				B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
 				B3A3B3171EBADB9900E20C30 /* LaunchScreen.storyboard */,
@@ -376,9 +379,9 @@
 			files = (
 				B3F0B5171ECD64170067AF5E /* IQNSArray+Sort.swift in Sources */,
 				B3F0B5261ECD64170067AF5E /* IQUIView+IQKeyboardToolbar.swift in Sources */,
-				B339DAAB1ECC2BC200F57F29 /* SecondPageViewController.swift in Sources */,
+				B339DAAB1ECC2BC200F57F29 /* ThirdPageViewController.swift in Sources */,
 				B3F0B5231ECD64170067AF5E /* IQPreviousNextView.swift in Sources */,
-				B339DAA91ECC278900F57F29 /* FirstPageViewController.swift in Sources */,
+				B339DAA91ECC278900F57F29 /* SecondPageViewController.swift in Sources */,
 				B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */,
 				20FD69771EC4334C00BDF6DB /* BEMCheckBox.m in Sources */,
 				B3F0B5211ECD64170067AF5E /* IQTextView.swift in Sources */,
@@ -386,6 +389,7 @@
 				B3F0B5191ECD64170067AF5E /* IQUITextFieldView+Additions.swift in Sources */,
 				B3F0B5241ECD64170067AF5E /* IQTitleBarButtonItem.swift in Sources */,
 				B3F0B51A1ECD64170067AF5E /* IQUIView+Hierarchy.swift in Sources */,
+				B3373E701ECFE8050096621A /* FirstPageViewController.swift in Sources */,
 				B3F0B5221ECD64170067AF5E /* IQBarButtonItem.swift in Sources */,
 				B3F0B51E1ECD64170067AF5E /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				B3F0B5201ECD64170067AF5E /* IQKeyboardReturnKeyHandler.swift in Sources */,

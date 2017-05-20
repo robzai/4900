@@ -16,12 +16,12 @@
                 <pageViewController restorationIdentifier="pageVC" storyboardIdentifier="pageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="eNW-mv-4y7" customClass="PageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFd-I6-l5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-825" y="-980"/>
+            <point key="canvasLocation" x="-1476" y="-976"/>
         </scene>
-        <!--First Page View Controller-->
+        <!--Second Page View Controller-->
         <scene sceneID="djI-lk-HlU">
             <objects>
-                <viewController restorationIdentifier="FirstVC" storyboardIdentifier="FirstVC" id="u5v-MY-DA6" customClass="FirstPageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SecondVC" storyboardIdentifier="SecondVC" id="u5v-MY-DA6" customClass="SecondPageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tar-ZE-yjt"/>
                         <viewControllerLayoutGuide type="bottom" id="IR6-4u-R40"/>
@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="-143.19999999999999" y="-974.6626686656673"/>
         </scene>
-        <!--Second Page View Controller-->
+        <!--Third Page View Controller-->
         <scene sceneID="pvj-i6-6rB">
             <objects>
-                <viewController restorationIdentifier="SecondVC" storyboardIdentifier="SecondVC" id="dGP-xj-SuL" customClass="SecondPageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ThirdVC" storyboardIdentifier="ThirdVC" id="dGP-xj-SuL" customClass="ThirdPageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BnU-BI-7Ga"/>
                         <viewControllerLayoutGuide type="bottom" id="bd1-3R-Wed"/>
@@ -171,6 +171,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAz-qA-1Gz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="511.19999999999999" y="-971.06446776611699"/>
+        </scene>
+        <!--First Page View Controller-->
+        <scene sceneID="FmW-Td-Aaq">
+            <objects>
+                <viewController restorationIdentifier="FirstVC" storyboardIdentifier="FirstVC" id="2Gz-ID-XJM" customClass="FirstPageViewController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2oJ-Sn-Jtq"/>
+                        <viewControllerLayoutGuide type="bottom" id="wnd-2P-8nt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jlz-9D-Fgd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ul-mm-RBF">
+                                <rect key="frame" x="154" y="225" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cN8-dW-RWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-801" y="-975"/>
         </scene>
         <!--Post Story Controller-->
         <scene sceneID="7hX-qm-ujF">
@@ -381,7 +408,7 @@
         <scene sceneID="S7M-8A-HeR">
             <objects>
                 <collectionViewController storyboardIdentifier="feedController" id="MDP-sC-nAO" customClass="FeedController" customModule="_900" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="uGJ-Rh-vyL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uGJ-Rh-vyL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

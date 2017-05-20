@@ -11,7 +11,7 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     lazy var viewControllerArr: [UIViewController] = {
-        return [self.vcInstance(name: "FirstVC"), self.vcInstance(name: "SecondVC")]
+        return [self.vcInstance(name: "FirstVC"), self.vcInstance(name: "SecondVC"), self.vcInstance(name: "ThirdVC")]
     }()
     
     //go through the array and retrive the approate view controller
@@ -42,10 +42,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func cancelButtonTapped(sender: UIBarButtonItem!){
-        print("Cancel tapped")
-
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedController") as! FeedController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+//        print("Cancel tapped")
+//
+//        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedController") as! FeedController
+//        self.navigationController?.pushViewController(secondViewController, animated: true)
+        self.tabBarController?.selectedIndex = 0
     }
     
     override func viewDidLayoutSubviews() {
