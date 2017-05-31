@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ThirdPageViewController: UIViewController {
+class ThirdPageViewController: UIViewController, SaveDataProtocol {
 
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        self.view.backgroundColor = UIColor.white
+        self.navigationItem.title = "3/3"
         
         let url = URL (string: "https://www.youtube.com/")
         let requestObj = URLRequest(url: url!)
@@ -26,4 +27,7 @@ class ThirdPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func saveData() {
+        print("third")
+    }
 }

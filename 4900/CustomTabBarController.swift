@@ -12,9 +12,11 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //UITabBar.appearance().backgroundColor = UIColor(white: 0.9 , alpha: 1)
+
         //first button to the tab bar
         let feedController =  FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        
         let navationConrtoller = UINavigationController(rootViewController: feedController)
         navationConrtoller.title = "Home"
         navationConrtoller.tabBarItem.image = UIImage(named: "home")
@@ -22,13 +24,15 @@ class CustomTabBarController: UITabBarController {
         
 //        let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostStoryController")
         let newPostController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pageVC")
-        //newPostController.navigationItem.title = "New Post"
         
-        let newPostNavtionController = UINavigationController(rootViewController: newPostController)
-        newPostNavtionController.title = "New Post"
-        newPostNavtionController.tabBarItem.image = UIImage(named: "newPost")
+//        let newPostNavtionController = UINavigationController(rootViewController: newPostController)
+//        newPostNavtionController.title = "New Post"
+//        newPostNavtionController.tabBarItem.image = UIImage(named: "newPost")
  
-        viewControllers = [navationConrtoller, newPostNavtionController]
+//        viewControllers = [navationConrtoller, newPostNavtionController]
+        newPostController.tabBarItem.image = UIImage(named: "newPost")
+        newPostController.title = "New Post"
+        viewControllers = [navationConrtoller, newPostController]
         tabBar.isTranslucent = false
         tabBar.layer.borderWidth = 0.2
         tabBar.layer.borderColor = UIColor(red:0.0/229.0, green:0.0/231.0, blue:0.0/235.0, alpha:0.2).cgColor

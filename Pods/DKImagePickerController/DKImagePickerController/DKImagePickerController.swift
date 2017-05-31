@@ -127,7 +127,7 @@ open class DKImagePickerController : UINavigationController {
     public var singleSelect = false
     
     /// The maximum count of assets which the user will be able to select.
-    public var maxSelectableCount = 999
+    public var maxSelectableCount = 6
     
     /// Set the defaultAssetGroup to specify which album is the default asset group.
     public var defaultAssetGroup: PHAssetCollectionSubtype?

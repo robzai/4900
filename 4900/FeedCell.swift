@@ -57,8 +57,7 @@ class FeedCell: UICollectionViewCell{
                         //create imageView to contain photo of the story
                         let statusImageView: UIImageView! = {
                             let imageView = UIImageView()
-                            imageView.backgroundColor = UIColor(white: 0.95 , alpha: 1)
-
+                            imageView.backgroundColor = UIColor.white
                             imageView.contentMode = .scaleAspectFit
                             return imageView
                         }()
@@ -76,7 +75,7 @@ class FeedCell: UICollectionViewCell{
                         let statusVideoView: UIWebView! = {
                             let videoView = UIWebView()
                             let embedURL = "<iframe width=\"\(viewWidth - leftAndRightMargin)\" height=\"315\"" + baseVideoURL + video + baseVideoURL2
-                            videoView.backgroundColor = UIColor(white: 0.95 , alpha: 1)
+                            videoView.backgroundColor = UIColor.white
                             videoView.loadHTMLString(embedURL, baseURL: nil)
                             videoView.scrollView.isScrollEnabled = false
                             return videoView

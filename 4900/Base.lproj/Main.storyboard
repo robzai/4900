@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,10 +30,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t4y-t5-NdC">
-                                <rect key="frame" x="0.0" y="230" width="375" height="437"/>
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFc-S5-knx" userLabel="Upload Image">
+                                <rect key="frame" x="32" y="252" width="132" height="32"/>
+                                <color key="backgroundColor" red="0.34908026460000002" green="0.72403192520000004" blue="0.63890296219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Ndv-de-U4I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="14"/>
+                                <state key="normal" title="Upload Images">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showImagePicker:" destination="u5v-MY-DA6" eventType="touchUpInside" id="PGn-Tz-ozI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrG-MJ-bhA">
+                                <rect key="frame" x="32" y="117" width="132" height="30"/>
+                                <color key="backgroundColor" red="0.34908026460000002" green="0.72403192520000004" blue="0.63890296219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4d2-Dt-BBp"/>
+                                    <constraint firstAttribute="width" constant="150" id="yoX-hO-kGB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="14"/>
+                                <state key="normal" title="Upload a Video">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadVideo:" destination="u5v-MY-DA6" eventType="touchUpInside" id="Lrk-2i-mOd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Paste your video link here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reZ-j0-0T8">
+                                <rect key="frame" x="29" y="155" width="226" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="226" id="BWE-Ei-8QW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAR-wz-r8j">
+                                <rect key="frame" x="29" y="173" width="267" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U1H-f3-dT3"/>
+                                    <constraint firstAttribute="width" constant="267" id="vBO-Zd-t31"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xV2-ka-bqq" customClass="BEMCheckBox">
+                                <rect key="frame" x="31" y="51" width="31" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Lg4-Qq-lbf">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                        <color key="value" red="0.34908026460000002" green="0.72403192520000004" blue="0.63890296219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                        <color key="value" red="0.34908026460000002" green="0.72403192520000004" blue="0.63890296219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                        <color key="value" red="0.34908026460000002" green="0.72403192520000004" blue="0.63890296219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t4y-t5-NdC">
+                                <rect key="frame" x="0.0" y="295" width="375" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="2" id="Lg4-Qq-lbf">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -47,8 +110,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-RR-H1A">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-RR-H1A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -69,8 +132,8 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-cO-j4S">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Play" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-Tl-RL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Play" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-Tl-RL5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -87,45 +150,37 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFY-6A-DI8">
-                                <rect key="frame" x="166" y="323" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Willing to share your story?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbs-Ki-wqq">
+                                <rect key="frame" x="47" y="87" width="191" height="22"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFc-S5-knx">
-                                <rect key="frame" x="0.0" y="107" width="192" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="Ndv-de-U4I"/>
-                                </constraints>
-                                <state key="normal" title="Add Image"/>
-                                <connections>
-                                    <action selector="showImagePicker:" destination="u5v-MY-DA6" eventType="touchUpInside" id="PGn-Tz-ozI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrG-MJ-bhA">
-                                <rect key="frame" x="57" y="20" width="105" height="30"/>
-                                <state key="normal" title="Upload a Video"/>
-                                <connections>
-                                    <segue destination="dGP-xj-SuL" kind="show" id="lbt-a3-iEQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FrG-MJ-bhA" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="16" id="0vp-rQ-a6X"/>
                             <constraint firstAttribute="trailing" secondItem="t4y-t5-NdC" secondAttribute="trailing" id="16r-jU-45z"/>
-                            <constraint firstItem="HFc-S5-knx" firstAttribute="top" secondItem="FrG-MJ-bhA" secondAttribute="bottom" constant="21" id="1zF-aa-StJ" userLabel="Add Image.top = Upload a Video.bottom + 25"/>
+                            <constraint firstItem="t4y-t5-NdC" firstAttribute="top" secondItem="HFc-S5-knx" secondAttribute="bottom" constant="10" id="Bdm-sT-uv0" userLabel="Collection View.top = Upload Image.bottom + 10"/>
+                            <constraint firstItem="FrG-MJ-bhA" firstAttribute="top" secondItem="Tbs-Ki-wqq" secondAttribute="bottom" constant="40" id="Cvj-da-D0L" userLabel="Upload a Video.top = Willing to share your story?.bottom + 40"/>
                             <constraint firstItem="IR6-4u-R40" firstAttribute="top" secondItem="t4y-t5-NdC" secondAttribute="bottom" id="HtZ-CL-xeF"/>
+                            <constraint firstItem="gAR-wz-r8j" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="16" id="Ipy-o5-TzL"/>
+                            <constraint firstItem="xV2-ka-bqq" firstAttribute="top" secondItem="Tar-ZE-yjt" secondAttribute="bottom" constant="31" id="Iyk-bW-cPf" userLabel="Box.top = Top Layout Guide.bottom + 31"/>
+                            <constraint firstItem="HFc-S5-knx" firstAttribute="top" secondItem="gAR-wz-r8j" secondAttribute="bottom" constant="40" id="Mmf-MF-obJ" userLabel="Upload Image.top = Videolink.bottom + 40"/>
                             <constraint firstItem="t4y-t5-NdC" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leading" id="O4x-XZ-XeJ"/>
-                            <constraint firstItem="HFc-S5-knx" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" id="QCb-DK-24b" userLabel="Add Image.leading = leadingMargin + 5"/>
-                            <constraint firstItem="t4y-t5-NdC" firstAttribute="top" secondItem="HFc-S5-knx" secondAttribute="bottom" id="R9K-6C-ydt" userLabel="Collection View.top = Add Image.bottom + 15"/>
-                            <constraint firstItem="FrG-MJ-bhA" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="41" id="qPQ-CK-4Sj"/>
-                            <constraint firstItem="FrG-MJ-bhA" firstAttribute="top" secondItem="Tar-ZE-yjt" secondAttribute="bottom" id="y0u-L0-ReT" userLabel="Upload a Video.top = Top Layout Guide.bottom + 20"/>
+                            <constraint firstItem="HFc-S5-knx" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="16" id="Oy1-Db-VoA"/>
+                            <constraint firstItem="reZ-j0-0T8" firstAttribute="top" secondItem="FrG-MJ-bhA" secondAttribute="bottom" constant="10" id="XZh-tu-uXY" userLabel="Paste your video link here.top = Upload a Video.bottom + 10"/>
+                            <constraint firstItem="Tbs-Ki-wqq" firstAttribute="leading" secondItem="xV2-ka-bqq" secondAttribute="trailing" constant="15" id="fug-Fu-SRJ" userLabel="Willing to share your story?.leading = Box.trailing + 15"/>
+                            <constraint firstItem="gAR-wz-r8j" firstAttribute="top" secondItem="reZ-j0-0T8" secondAttribute="bottom" constant="5" id="idb-5P-Mh4" userLabel="Videolink.top = Paste your video link here.bottom + 5"/>
+                            <constraint firstItem="Tbs-Ki-wqq" firstAttribute="top" secondItem="Tar-ZE-yjt" secondAttribute="bottom" constant="35" id="qk9-ee-TmG" userLabel="Willing to share your story?.top = Top Layout Guide.bottom + 35"/>
+                            <constraint firstItem="xV2-ka-bqq" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="15" id="sBw-sc-jIS"/>
+                            <constraint firstItem="reZ-j0-0T8" firstAttribute="leading" secondItem="dlL-9r-1Bx" secondAttribute="leadingMargin" constant="16" id="vBq-2n-BDg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="box" destination="xV2-ka-bqq" id="V6U-VZ-akW"/>
                         <outlet property="collectionView" destination="t4y-t5-NdC" id="X4u-Dp-Xud"/>
+                        <outlet property="videolink" destination="gAR-wz-r8j" id="dCG-z9-uah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KqG-Zh-WcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,20 +239,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ul-mm-RBF">
-                                <rect key="frame" x="154" y="225" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ul-mm-RBF">
+                                <rect key="frame" x="32" y="92" width="119" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kev-vh-mPK">
+                                <rect key="frame" x="32" y="163" width="119" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date of Visit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1s5-dK-Zbe">
+                                <rect key="frame" x="32" y="241" width="119" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Why did you choose to visit RMHCNA?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41Y-rK-JN2">
+                                <rect key="frame" x="32" y="322" width="292" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please share any experiences, quotes, or memorable stories." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uar-ra-C2j">
+                                <rect key="frame" x="32" y="389" width="284" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NE4-4l-1HS">
+                                <rect key="frame" x="32" y="113" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iRO-GW-s9a">
+                                <rect key="frame" x="32" y="187" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6q7-iZ-UPv">
+                                <rect key="frame" x="32" y="343" width="307" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-WI-pIo">
+                                <rect key="frame" x="32" y="263" width="178" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7lU-Oe-pak">
+                                <rect key="frame" x="32" y="444" width="307" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBL-Tg-hpH">
+                                <rect key="frame" x="104" y="93" width="13" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwj-L5-R30">
+                                <rect key="frame" x="117" y="165" width="9" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFl-sL-Ne7">
+                                <rect key="frame" x="117" y="243" width="9" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="0.80000000000000004" height="0.80000000000000004"/>
                     </view>
+                    <connections>
+                        <outlet property="datePickerTxt" destination="Y83-WI-pIo" id="fIs-Rr-lei"/>
+                        <outlet property="groupnametext" destination="iRO-GW-s9a" id="Ras-AM-tLu"/>
+                        <outlet property="nametext" destination="NE4-4l-1HS" id="ycp-op-B4X"/>
+                        <outlet property="reasontext" destination="6q7-iZ-UPv" id="uMz-xi-fQd"/>
+                        <outlet property="storytext" destination="7lU-Oe-pak" id="6k0-qz-5uZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN8-dW-RWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="-975"/>
+            <point key="canvasLocation" x="-802.39999999999998" y="-975.56221889055485"/>
         </scene>
         <!--Post Story Controller-->
         <scene sceneID="7hX-qm-ujF">

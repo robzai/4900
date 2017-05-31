@@ -16,7 +16,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     //go through the array and retrive the approate view controller
     private func vcInstance(name: String) -> UIViewController{
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: name)
+        let pageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: name)
+        let newPostNavtionController = UINavigationController(rootViewController: pageViewController)
+        return newPostNavtionController
     }
     
     override func viewDidLoad() {
@@ -24,16 +26,17 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         dataSource = self
         delegate = self
         
-        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector(("Post")))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
-        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelButtonTapped(sender:)))
-
-        
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        self.navigationItem.title = "New Post"
+//        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector(("Post")))
+//        self.navigationItem.rightBarButtonItem = rightBarButton
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+//        
+//        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelButtonTapped(sender:)))
+//
+//        
+//        self.navigationItem.leftBarButtonItem = leftBarButton
+//        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+//        
+//        self.navigationItem.title = "New Post"
         
         //set what is you first viewController
         if let firstVC = viewControllerArr.first{
@@ -41,13 +44,13 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
     
-    func cancelButtonTapped(sender: UIBarButtonItem!){
+//    func cancelButtonTapped(sender: UIBarButtonItem!){
 //        print("Cancel tapped")
 //
 //        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "feedController") as! FeedController
 //        self.navigationController?.pushViewController(secondViewController, animated: true)
-        self.tabBarController?.selectedIndex = 0
-    }
+//        self.tabBarController?.selectedIndex = 0
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -108,6 +111,21 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             return 0
         }
         return firstVCIndex
+    }
+    
+    //Called after a gesture-driven transition completes.
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+        for navVC in previousViewControllers{
+            let VCs = navVC.childViewControllers
+            for vc in VCs {
+                let pt = vc as! SaveDataProtocol
+                pt.saveData()
+
+            }
+        }
     }
     
 }

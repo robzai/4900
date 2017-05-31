@@ -289,10 +289,10 @@ class PostStoryController: UIViewController, UICollectionViewDelegate, UICollect
 
 }
 
-extension NSMutableData {
-    
-    func appendString(_ string: String) {
-        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
-        append(data!)
-    }
-}
+//extension NSMutableData {
+//    
+//    func appendString(_ string: String) {
+//        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+//        append(data!)
+//    }
+//}

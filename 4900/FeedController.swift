@@ -43,9 +43,11 @@ class FeedController: UICollectionViewController,UICollectionViewDelegateFlowLay
         
         refreshData()
         
-        navigationItem.title = "RMHC"
+        navigationItem.title = "RMHCNA"
         //collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor(white: 0.9 , alpha: 1)
+        //collectionView?.backgroundColor = UIColor.white
+
         //register cells for the collection view
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         
