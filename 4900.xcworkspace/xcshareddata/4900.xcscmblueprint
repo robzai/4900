@@ -10,9 +10,9 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B1D513DA-6C94-4E26-9DBB-0EF8BE8C90F8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "2C2A4A68FE124A198723DD787071811FB890E6CD" : "4900_final\/",
-    "2045D86BC5D391C299DCC498309E722E037BFF4E" : "4900_final\/OAuth2\/",
-    "10B73D0B7CE5B1CD363428FDF4A01A2A9E2F0357" : "4900_final\/OAuth2\/SwiftKeychain\/"
+    "2C2A4A68FE124A198723DD787071811FB890E6CD" : "4900_final2\/",
+    "2045D86BC5D391C299DCC498309E722E037BFF4E" : "4900_final2\/OAuth2\/",
+    "10B73D0B7CE5B1CD363428FDF4A01A2A9E2F0357" : "4900_final2\/OAuth2\/SwiftKeychain\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "4900",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

@@ -11,14 +11,12 @@
 		20FD69771EC4334C00BDF6DB /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD69711EC4334B00BDF6DB /* BEMCheckBox.m */; };
 		20FD69781EC4334C00BDF6DB /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD69731EC4334B00BDF6DB /* BEMCheckBoxGroup.m */; };
 		20FD69791EC4334C00BDF6DB /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD69751EC4334B00BDF6DB /* BEMPathManager.m */; };
-		8D144DCB1EBEE7E5009C531C /* PostStoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */; };
 		8D144DCE1EBF0AB9009C531C /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DCD1EBF0AB9009C531C /* Story.swift */; };
 		8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D144DD51EBF1733009C531C /* CustomTabBarController.swift */; };
 		B3373E701ECFE8050096621A /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3373E6F1ECFE8050096621A /* FirstPageViewController.swift */; };
 		B3373E741ED0CDF80096621A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3373E731ED0CDF80096621A /* Protocols.swift */; };
 		B339DAA71ECC118700F57F29 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA61ECC118700F57F29 /* PageViewController.swift */; };
 		B339DAA91ECC278900F57F29 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */; };
-		B339DAAB1ECC2BC200F57F29 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */; };
 		B3798D2B1EDE5C5400A6AC9B /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3798D231EDE5BBA00A6AC9B /* OAuth2.framework */; };
 		B3798D2E1EDE603C00A6AC9B /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3798D231EDE5BBA00A6AC9B /* OAuth2.framework */; };
 		B3798D2F1EDE603C00A6AC9B /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3798D231EDE5BBA00A6AC9B /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,7 +116,6 @@
 		20FD69741EC4334B00BDF6DB /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPathManager.h; sourceTree = "<group>"; };
 		20FD69751EC4334B00BDF6DB /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPathManager.m; sourceTree = "<group>"; };
 		20FD697A1EC433B500BDF6DB /* CheckMarkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckMarkHeader.h; sourceTree = "<group>"; };
-		8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStoryController.swift; sourceTree = "<group>"; };
 		8D144DCD1EBF0AB9009C531C /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		8D144DD51EBF1733009C531C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		B040F53E6D81ECE3F61A3253 /* Pods-4900.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-4900.debug.xcconfig"; path = "Pods/Target Support Files/Pods-4900/Pods-4900.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +123,6 @@
 		B3373E731ED0CDF80096621A /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		B339DAA61ECC118700F57F29 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
-		B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
 		B3798D191EDE5BBA00A6AC9B /* OAuth2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2.xcodeproj; path = OAuth2/OAuth2.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B3798D331EDE7A1200A6AC9B /* OAuth2RequestRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2RequestRetrier.swift; sourceTree = "<group>"; };
 		B3A3B30B1EBADB9900E20C30 /* 4900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4900.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,12 +247,10 @@
 				B3A3B30E1EBADB9900E20C30 /* AppDelegate.swift */,
 				B3EDA90A1EC5215D00D00C2A /* FeedCell.swift */,
 				B3A3B3101EBADB9900E20C30 /* FeedController.swift */,
-				8D144DCA1EBEE7E5009C531C /* PostStoryController.swift */,
 				8D144DD51EBF1733009C531C /* CustomTabBarController.swift */,
 				B339DAA61ECC118700F57F29 /* PageViewController.swift */,
 				B3373E6F1ECFE8050096621A /* FirstPageViewController.swift */,
 				B339DAA81ECC278900F57F29 /* SecondPageViewController.swift */,
-				B339DAAA1ECC2BC200F57F29 /* ThirdPageViewController.swift */,
 				B3A3B3121EBADB9900E20C30 /* Main.storyboard */,
 				B3798D191EDE5BBA00A6AC9B /* OAuth2.xcodeproj */,
 				B3A3B3151EBADB9900E20C30 /* Assets.xcassets */,
@@ -503,7 +497,6 @@
 			files = (
 				B3F0B5171ECD64170067AF5E /* IQNSArray+Sort.swift in Sources */,
 				B3F0B5261ECD64170067AF5E /* IQUIView+IQKeyboardToolbar.swift in Sources */,
-				B339DAAB1ECC2BC200F57F29 /* ThirdPageViewController.swift in Sources */,
 				B3F0B5231ECD64170067AF5E /* IQPreviousNextView.swift in Sources */,
 				B339DAA91ECC278900F57F29 /* SecondPageViewController.swift in Sources */,
 				B3A3B3111EBADB9900E20C30 /* FeedController.swift in Sources */,
@@ -526,7 +519,6 @@
 				8D144DD61EBF1733009C531C /* CustomTabBarController.swift in Sources */,
 				B3F0B51B1ECD64170067AF5E /* IQUIViewController+Additions.swift in Sources */,
 				20FD69791EC4334C00BDF6DB /* BEMPathManager.m in Sources */,
-				8D144DCB1EBEE7E5009C531C /* PostStoryController.swift in Sources */,
 				B3F0B51C1ECD64170067AF5E /* IQUIWindow+Hierarchy.swift in Sources */,
 				B3F0B51F1ECD64170067AF5E /* IQKeyboardManager.swift in Sources */,
 				20FD69781EC4334C00BDF6DB /* BEMCheckBoxGroup.m in Sources */,

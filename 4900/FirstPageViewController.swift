@@ -36,7 +36,7 @@ class FirstPageViewController: UIViewController, SaveDataProtocol {
 //        view.backgroundColor = bgColor
         //self.view.backgroundColor = UIColor(white: 0.9 , alpha: 1)
         self.view.backgroundColor = UIColor.white
-        self.navigationItem.title = "1/3"
+        self.navigationItem.title = "1/2"
         
         
         let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(FirstPageViewController.cancel))

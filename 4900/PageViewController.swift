@@ -11,7 +11,7 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     lazy var viewControllerArr: [UIViewController] = {
-        return [self.vcInstance(name: "FirstVC"), self.vcInstance(name: "SecondVC"), self.vcInstance(name: "ThirdVC")]
+        return [self.vcInstance(name: "FirstVC"), self.vcInstance(name: "SecondVC")]
     }()
     
     //go through the array and retrive the approate view controller
@@ -29,13 +29,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
 //        let rightBarButton = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.plain, target: self, action: Selector(("Post")))
 //        self.navigationItem.rightBarButtonItem = rightBarButton
 //        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-//        
-//        let leftBarButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelButtonTapped(sender:)))
-//
-//        
-//        self.navigationItem.leftBarButtonItem = leftBarButton
-//        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-//        
+     
 //        self.navigationItem.title = "New Post"
         
         //set what is you first viewController
